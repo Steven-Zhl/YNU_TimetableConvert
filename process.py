@@ -196,12 +196,15 @@ def get1WeekMondayDate(Apps: str):
             return content
         else:
             print("您的输入有误，请重试")
-            get1WeekMondayDate(Apps)
+            return get1WeekMondayDate(Apps)
 
 
 def askopenfilename(title, fileType):
+    """
+    请求文件链接
+    """
     filePath = input(title)
-    if '"' in filePath:
+    if '"' in filePath: # 考虑到右键文件复制的链接中自带双引号，这里去掉
         filePath = filePath.replace('"', '')
 
     if not (os_path.isfile(path=filePath) and filePath.endswith(fileType)):
